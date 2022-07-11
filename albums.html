@@ -7,10 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="albums.js" defer></script>
+    <script src="navBar.js" defer></script>
+    <link rel="stylesheet" href="style/navBar.css">
+    <link rel="stylesheet" href="style/albums.css">
 </head>
 
 <body>
-    <div id="albums-wrapper"></div>
+
+    <div class="nav-bar-wrapper">
+        <nav id="nav-bar-wrapper">
+            <form action="search.html" id="search-form">
+                <input type="text" name="text" id="search-input">
+                <input type="submit" value="search">
+            </form>
+
+        </nav>
+    </div>
+    <div id="body-wrapper">
+        <div id="albums-wrapper"></div>
+    </div>
 </body>
 
 </html>

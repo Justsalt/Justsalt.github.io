@@ -3,7 +3,6 @@ let urlParamas = new URLSearchParams(queryParams)
 let postId = urlParamas.get("post_id")
 console.log(postId)
 
-
 mainWrapper = document.querySelector("#post-wrapper")
 let albumlist = document.querySelector("#post-albums")
 

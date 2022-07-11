@@ -12,9 +12,7 @@ ulElement.classList.add("ul-element")
 
 
 
-let mainUsersNav = document.createElement("div")
-mainUsersNav.innerHTML = `<a href="./jsonplaceholder.html">Home page</a>`
-albumsWrapper.append(mainUsersNav)
+
 
 fetch('https://jsonplaceholder.typicode.com/albums')
     .then(res => res.json())
@@ -33,16 +31,26 @@ fetch('https://jsonplaceholder.typicode.com/albums')
                         .then(res => res.json())
                         .then((albumPhotoCount) => {
 
-                            console.log(albumPhotoCount[0].thumbnailUrl)
+                            // console.log(albumPhotoCount[0].thumbnailUrl)
 
+
+
+                            // let randomIndex = Math.floor(Math.random( 1 * albumPhotoCount.length))
                             //PAVADINIMAS ALBUMO
+                            let albumAuthorsWrapper = document.createElement("div")
+                            albumAuthorsWrapper.classList.add("album-authors-wrapper")
+
+
                             let liElementAlbum = document.createElement("li")
                             liElementAlbum.classList.add("li-elementAlbum")
-                            liElementAlbum.innerHTML = `<strong>Album Title:</strong>${album.title} `
+                            liElementAlbum.innerHTML = ` <strong>   <a href="./album.html?album_Id=${album.id}&album_title=${album.title}&album_userId=${album.userId}">${album.title}</a></strong>`
+                            liElementAlbum.classList.add("album-title")
+
+
 
                             let liElementAuthor = document.createElement("li")
                             liElementAuthor.classList.add("liElementAuthor")
-                            liElementAuthor.innerHTML = `<strong>Author:</strong>${user.name}`
+                            liElementAuthor.innerHTML = `<strong>Author:</strong><a href="./user.html?user_id=${album.userId}">${user.name}</>`
 
                             let liElementNumber = document.createElement("li")
                             liElementNumber.classList.add("liElementNumber")
@@ -54,8 +62,8 @@ fetch('https://jsonplaceholder.typicode.com/albums')
 
 
 
-
-                            ulElement.append(liElementAlbum, liElementAuthor, liElementNumber, liElementImg)
+                            albumAuthorsWrapper.append(liElementAlbum, liElementAuthor, liElementNumber, liElementImg)
+                            ulElement.append(albumAuthorsWrapper)
                             albumsWrapper.append(ulElement)
                         })
                 })

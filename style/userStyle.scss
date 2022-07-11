@@ -1,7 +1,44 @@
 .user-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    width: 70%;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 5rem;
+}
+
+.address-item,
+.album-item {
+    list-style-type: none;
+}
+
+.info-wrapper,
+#user-post-wrapper,
+#user-albums {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info-wrapper h2 {
+    text-transform: uppercase;
+}
+
+#post-wrapper {
+    padding-top: 1rem;
+}
+
+.user-albums-title {
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.post-seperate {
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 2rem;
+}
+
+#recent-post {
+    color: red;
+    padding: 0 0 0 1rem;
+    text-transform: uppercase;
 }

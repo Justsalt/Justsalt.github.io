@@ -10,8 +10,14 @@ let userId = urlParamas.get("user_id")
 
 let userInfo = document.querySelector("#info-user")
 let userInfoItems = document.createElement("div")
-let userAlbums = document.querySelector("#user-albums");
 
+
+
+let userAlbums = document.querySelector("#user-albums");
+let userAlbumsTitle = document.createElement("div")
+userAlbumsTitle.innerHTML = `<h3 class="user-album-title">User Albums</h3>`
+userAlbumsTitle.classList.add("user-albums-title")
+userAlbums.prepend(userAlbumsTitle)
 
 
 
@@ -21,7 +27,8 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
         let user = oneUser
             // console.log(user)
             //regual adress
-        console.log(user)
+        console.log(user.address.geo.lat)
+        console.log(user.address.geo.lng)
 
         userInfoItems.innerHTML = `<br>`
         userInfoItems.classList.add("user-info-items")
@@ -33,7 +40,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
         let userUsername = document.createElement("div")
         userUsername.innerHTML = `Username :${user.username}`
         let userEmail = document.createElement("div")
-        userEmail.innerHTML = `Email : ${user.email}`
+        userEmail.innerHTML = `Email :<a href="mailto:${user.email}">${user.email}</a>`
 
 
         //adress Elements
@@ -41,7 +48,8 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 
         //
         let adressGoogleMaps = document.createElement("a")
-        adressGoogleMaps.innerHTML = `<a href="https://maps.google.com/?q=${adressUserExtract.street}, ${adressUserExtract.city},${adressUserExtract.zipcode}" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Adress</a>`
+
+        adressGoogleMaps.innerHTML = `<a href="https://maps.google.com/?q=${user.address.geo.lat},${user.address.geo.lng}" target="_blank">Adress</a>`
         adressGoogleMaps.classList.add("google-maps")
 
 
@@ -49,17 +57,21 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 
         let userUlorder = document.createElement("ul")
         let userLiOrderStreet = document.createElement("li")
+        userLiOrderStreet.classList.add("address-item")
         userLiOrderStreet.innerHTML = `Street: ${adressUserExtract.street}`
         let userLiOrderSuite = document.createElement("li")
+        userLiOrderSuite.classList.add("address-item")
         userLiOrderSuite.innerHTML = `Suite: ${adressUserExtract.suite}`
         let useuserLiOrderCity = document.createElement("li")
+        useuserLiOrderCity.classList.add("address-item")
         useuserLiOrderCity.innerHTML = `City: ${adressUserExtract.city}`
         let useuserLiOrderZipcode = document.createElement("li")
+        useuserLiOrderZipcode.classList.add("address-item")
         useuserLiOrderZipcode.innerHTML = `zipcode: ${adressUserExtract.zipcode}`
 
         //resume for regular adress 
         let userPhone = document.createElement("div")
-        userPhone.innerHTML = `Phone : ${user.phone}`
+        userPhone.innerHTML = `Phone :<a href="tel:${user.phone}"> ${user.phone}</a>`
         let userWebsite = document.createElement("a")
         userWebsite.innerHTML = `${user.website} `
         userWebsite.href = `${user.website}`
@@ -82,19 +94,21 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
             .then((postData) => {
                 let postWrapper = document.querySelector("#post-wrapper")
                 let postTitle = document.createElement("h3")
-                postTitle.classList = "post-title"
-                postTitle.textContent = "User Post"
+
                 postWrapper.append(postTitle)
 
                 postData.map((post) => {
 
                     // console.log(post)
                     let postItem = document.createElement("div")
+                    let postSeperate = document.createElement("div")
+                    postSeperate.classList.add("post-seperate")
                     postItem.classList.add("post-item")
                     postItem.innerHTML = `<h4>${post.title}</h4>
                                           <p>${post.body}<p>
                                           <a href="post.html?post_id=${post.id}">Read More<a/>`
-                    postWrapper.prepend(postItem)
+                    postSeperate.append(postItem)
+                    postWrapper.prepend(postSeperate)
                 })
 
             })
@@ -104,12 +118,12 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
     .then((albums) => {
         // let userAlbums = document.querySelector("#user-albums");
 
-        userAlbums.innerHTML = `<h3 class="user-album-title">User Albums</h3>`
+
 
         let albumList = document.createElement("ul")
         albumList.classList.add("album-list")
-
         userAlbums.append(albumList)
+
         albums.map((album) => {
             let albumItem = document.createElement("li")
             albumItem.classList.add("album-item")

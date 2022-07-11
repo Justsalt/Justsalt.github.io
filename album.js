@@ -19,9 +19,7 @@ userIdGet = urlParamas.get('album_userId')
 
 let albumWrapper = document.querySelector("#album-wrapper")
 
-let mainUsersNav = document.createElement("div")
-mainUsersNav.innerHTML = `<a href="./jsonplaceholder.html">Home page</a>`
-albumWrapper.append(mainUsersNav)
+
 
 // console.log(albumIdGet)
 
@@ -49,6 +47,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userIdGet}`)
             .then(res => res.json())
             .then((photos) => {
                 photos.map((photo) => {
+
                     console.log(photo.length)
 
                     let albumPhoto = document.createElement("img")

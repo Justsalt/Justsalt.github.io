@@ -1,40 +1,11 @@
-//search laukelis
+// import { navBar } from './navBar.js'
 
-
-let searchForm = document.querySelector("#search-form")
-let searchInput = document.querySelector("#search-input")
-searchForm.addEventListener("submit", (event) => {
-    event.preventDefault()
-
-    // let hrefTrasnfer = document.createElement("a")
-    // hrefTrasnfer.innerHTML = `<a href="./search.html?search_value=${searchInput.value}"></a>`
-    console.log(searchInput)
-    localStorage.setItem("searchInput", searchInput.value)
-
-
-
-    searchInput.value = ""
-})
-
-
-
-
-
-
-
-
-
-mainWrapper = document.querySelector("#post-wrapper")
+let mainWrapper = document.querySelector("#post-wrapper")
 let albumlist = document.querySelector("#post-albums")
 
-let mainUsersNav = document.querySelector(".main-home")
-mainUsersNav.innerHTML = `<a href="./jsonplaceholder.html">Home</a>`
-let mainUsersUsers = document.querySelector(".main-users")
-mainUsersUsers.innerHTML = `<a href="./users.html">Users</a>`
-let mainUsersAlbums = document.querySelector(".main-albums")
-mainUsersAlbums.innerHTML = `<a href="./albums.html">albums</a>`
-let mainUsersPosts = document.querySelector(".main-posts")
-mainUsersPosts.innerHTML = `<a href="./posts.html">Posts</a>`
+
+
+
 
 
 
@@ -80,10 +51,11 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10`)
             // let toggleButton = true
             comments.addEventListener("click", () => {
                 commentWrapper.textContent = ""
+                postDiv.append(commentWrapper)
                     // if (toggleButton) {
-
-                if (commentWrapper.style.display === "none") {
-                    commentWrapper.style.display = "block";
+                commentWrapper.classList.toggle("hiden")
+                commentWrapper.style.display = "block";
+                if (commentWrapper.classList.contains("hiden")) {
 
                     fetch(`https://jsonplaceholder.typicode.com/post/${users.id}/comments`)
                         .then((res) => res.json())
@@ -112,7 +84,6 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10`)
 
                                 commentDiv.prepend(commentName, brElement, commentBody, brrElement, emailBody, brrrElement)
                                 commentWrapper.append(commentDiv)
-                                postDiv.append(commentWrapper)
 
                             })
 
@@ -121,10 +92,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10`)
                         })
 
 
-                    // } else {
-                    //     commentWrapper.style.display = "none"
-                    //     toggleButton = true
-                    // }
+
                 } else {
                     commentWrapper.style.display = "none";
                 }

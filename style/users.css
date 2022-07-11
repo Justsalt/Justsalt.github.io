@@ -1,0 +1,16 @@
+#user-wrapper ul li,
+.users-list-title {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
+#user-wrapper ul li a {
+  text-decoration: none;
+}
+
+.users-list-title {
+  color: rgb(82, 82, 82);
+}/*# sourceMappingURL=users.css.map */

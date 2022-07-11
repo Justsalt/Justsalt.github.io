@@ -1,0 +1,16 @@
+.post-item {
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#posts-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#post-title {
+    text-align: center;
+    margin: 2rem 0 2rem 0;
+    font-size: 2rem;
+}

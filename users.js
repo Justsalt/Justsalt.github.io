@@ -3,10 +3,15 @@
 //   8.2. Paspaudus ant vartotojo - nukreipiama į jo puslapį.
 let userList = document.querySelector("#user-wrapper")
 let userUlList = document.createElement("ul")
+let userListTitle = document.createElement("h2")
+userListTitle.classList.add("users-list-title")
+userListTitle.textContent = "Users List"
+userList.prepend(userListTitle)
 
-let mainUsersNav = document.createElement("div")
-mainUsersNav.innerHTML = `<a href="./jsonplaceholder.html">Home page</a>`
-userList.append(mainUsersNav)
+
+
+
+
 fetch(`https://jsonplaceholder.typicode.com/users `)
     .then(res => res.json())
     .then((users) => {
@@ -24,7 +29,7 @@ fetch(`https://jsonplaceholder.typicode.com/users `)
                 .then((postLength) => {
                     console.log(postLength.length)
 
-                    userLiList.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a> (${postLength.length}) `
+                    userLiList.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a> ( Posts :${postLength.length}) `
                 })
         })
     })

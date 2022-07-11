@@ -5,24 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="navBar.js" defer></script> -->
     <script src="user.js" defer></script>
+    <script src="navBar.js" defer></script>
     <link rel="stylesheet" href="style/userStyle.css">
+    <link rel="stylesheet" href="style/navBar.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="user-wrapper">
-        <div class="info-wrapper">
-            <h2>User Info</h2>
-            <div id="info-user"></div>
-        </div>
+    <div class="nav-bar-wrapper">
+        <nav id="nav-bar-wrapper">
+            <form action="search.html" id="search-form">
+                <input type="text" name="text" id="search-input">
+                <input type="submit" value="search">
+            </form>
 
-        <div id="user-post-wrapper">
-            <h2>Recent post</h2>
-            <div id="post-wrapper"></div>
-        </div>
-        <div id="user-albums"></div>
+        </nav>
+    </div>
+    <div id="body-wrapper">
+        <div class="user-wrapper">
+            <div class="info-wrapper">
+                <h2>User Info</h2>
+                <div id="info-user"></div>
+            </div>
 
+            <div id="user-post-wrapper">
+                <h2 id="recent-post">Recent post</h2>
+                <div id="post-wrapper"></div>
+            </div>
+            <div id="user-albums"></div>
+
+        </div>
     </div>
 </body>
 
