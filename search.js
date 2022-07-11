@@ -75,7 +75,7 @@ Promise.all([usernameSearch, nameSearch, emailSearch, postsTitleSearch, albumTit
 
             if (albumsTitle.length > 0) {
                 let outputTextWrapper = document.createElement("div")
-                outputTextWrapper.innerHTML = `<strong>Albums title title</strong> <a href="./posts.html?post_id=${title.id} "> : (${title.title }) rastas`
+                outputTextWrapper.innerHTML = `<strong>Albums title title</strong> <a href="./posts.html?post_id=${title.id} "> : (${title.title }</a>) rastas`
                 outputWrapper.append(outputTextWrapper)
                 console.log(title)
             }
