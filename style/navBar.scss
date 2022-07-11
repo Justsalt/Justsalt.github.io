@@ -4,6 +4,12 @@
     padding: 0;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 #nav-bar-wrapper {
     display: flex;
     justify-content: flex-end;
@@ -15,16 +21,18 @@
     margin-right: auto;
     margin-left: auto;
     width: 70%;
-    // background-color: rgb(128, 128, 128);
-}
-
-.nav-bar-wrapper {
-    background-color: rgb(46, 156, 170);
+    background-color: rgb(128, 128, 128);
 }
 
 .redit-image {
     margin-right: auto;
     margin-left: 3rem;
+}
+
+.redit-image:hover {
+    background-color: powderblue;
+    transition: background-color .5s;
+    border-radius: 50%;
 }
 
 #body-wrapper {
@@ -50,7 +58,7 @@
     border: none;
 }
 
-input[type=submit] {
+#search-button {
     padding: 0.6rem;
     border-radius: 0 1rem 1rem 0;
     border: none;

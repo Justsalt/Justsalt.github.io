@@ -1,7 +1,19 @@
 let queryParams = document.location.search
 let urlParamas = new URLSearchParams(queryParams)
-let searchValue = urlParamas.get("search_value").toLocaleLowerCase()
-console.log(searchValue)
+let searchValue = urlParamas.get("search_value")
+
+
+// let searchForm = document.createElement("form")
+// let inputSearchTrasnfer = document.createElement("input")
+// inputSearchTrasnfer.setAttribute("type", "text")
+// let inputButtonTrasnfer = document.createElement("input")
+// inputButtonTrasnfer.setAttribute("type", "submit")
+
+// let x = ""
+// searchForm.addEventListener("submit", (e) => {
+//     e.preventDefault()
+//     x = inputSearchTrasnfer.value
+// })
 
 
 
@@ -11,10 +23,10 @@ let outputWrapper = document.querySelector("#output-wrapper")
 
 let outputTextWrapper = document.createElement("div")
 
-
+// searchForm.append(inputSearchTrasnfer, inputButtonTrasnfer)
 outputWrapper.append(outputTextWrapper)
 
-let usernameSearch = fetch(`https://jsonplaceholder.typicode.com/users?username_like=${searchValue}`)
+let usernameSearch = fetch(`https://jsonplaceholder.typicode.com/users?username_like=${searchValue}$`)
 let nameSearch = fetch(`https://jsonplaceholder.typicode.com/users?name_like=${searchValue}`)
 let emailSearch = fetch(`https://jsonplaceholder.typicode.com/users?email_like=${searchValue}`)
 let postsTitleSearch = fetch(`https://jsonplaceholder.typicode.com/posts?title_like=${searchValue}`)
@@ -28,11 +40,11 @@ Promise.all([usernameSearch, nameSearch, emailSearch, postsTitleSearch, albumTit
 }).then(([usernames, names, emails, postsTitle, albumsTitle]) => {
 
 
+    let searchingValue = document.createElement("div")
     if ((usernames.length || names.length || emails.length || postsTitle.length || albumsTitle.length) && searchValue.length > 0) {
         usernames.map((username) => {
-            let searchingValue = document.createElement("div")
             searchingValue.classList.add("searching-value")
-            searchingValue.innerHTML = `Ieskomas Zodis  ( ${searchValue})`
+            searchingValue.innerHTML = `Ieskomas Zodis  (${searchValue})`
             outputWrapper.prepend(searchingValue)
 
             // if (username.username === `${searchValue}`) {
@@ -77,14 +89,14 @@ Promise.all([usernameSearch, nameSearch, emailSearch, postsTitleSearch, albumTit
                 let outputTextWrapper = document.createElement("div")
                 outputTextWrapper.innerHTML = `<strong>Albums title title</strong> <a href="./posts.html?post_id=${title.id} "> : (${title.title }</a>) rastas`
                 outputWrapper.append(outputTextWrapper)
-                console.log(title)
+                    // console.log(title)
             }
 
         })
     } else {
         let searchingValue = document.createElement("div")
         searchingValue.classList.add("searching-value")
-        searchingValue.innerHTML = `Ieskomas Zodis  ( ${searchValue})`
+        searchingValue.innerHTML = `Ieskomas Zodis  (${searchValue})`
         outputWrapper.prepend(searchingValue)
 
         outputTextWrapper.innerHTML = `<strong>Tokių duomenų nerasta, bandykite dar kartą</strong>`
