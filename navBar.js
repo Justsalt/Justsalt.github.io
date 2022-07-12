@@ -5,6 +5,10 @@ let pathName = document.location.pathname
 let links = ["/jsonplaceholder.html", "/users.html", "/albums.html", "/posts.html", "/search.html"]
 
 
+
+
+
+
 let bodySelect = document.querySelector("body")
 let navBarWrapper = document.createElement("div")
 navBarWrapper.setAttribute("id", "nav-bar-wrapper")
@@ -20,7 +24,40 @@ let inputSubmitButton = document.createElement("button")
 inputSubmitButton.setAttribute("value", "search")
 inputSubmitButton.setAttribute("type", "submit")
 inputSubmitButton.setAttribute("id", "search-button")
-inputSubmitButton.textContent = "search" // ?? 
+inputSubmitButton.textContent = "search" // ??
+
+
+
+
+//select option
+
+
+let selectWrapper = document.createElement("select")
+let optionInputName = document.createElement("option")
+optionInputName.setAttribute("value", "Name")
+optionInputName.textContent = "Name"
+
+
+let optionInputAlbums = document.createElement("option")
+optionInputAlbums.setAttribute("value", "Albums")
+optionInputAlbums.textContent = "Albums"
+
+let optionInputPosts = document.createElement("option")
+optionInputPosts.setAttribute("value", "Posts")
+optionInputPosts.textContent = "Posts"
+selectWrapper.append(optionInputName, optionInputAlbums, optionInputPosts)
+
+
+
+
+{
+    /* <select id="cars" name="cars" size="3">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="fiat">Fiat</option>
+      <option value="audi">Audi</option>
+    </select> */
+}
 
 
 
@@ -72,8 +109,9 @@ if (pathName == links[4]) {
 
 searchFormInput.addEventListener("submit", (event) => {
     event.preventDefault()
-    window.location.href = `./search.html?search_value=${inputText.value}`;
+    window.location.href = `./search.html?search_value=${inputText.value}&select_value=${selectWrapper.value}`;
 
+    console.dir(event)
 
 
 })
@@ -83,7 +121,7 @@ searchFormInput.addEventListener("submit", (event) => {
 
 
 
-searchFormInput.append(inputText, inputSubmitButton)
+searchFormInput.append(inputText, selectWrapper, inputSubmitButton)
 navBar.append(searchFormInput)
 navBarWrapper.append(image, mainUsers, mainUsersAlbums, mainUsersPosts, navBar)
 bodySelect.prepend(navBarWrapper)
