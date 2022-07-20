@@ -1,6 +1,5 @@
-// 8. Sukurti vartotojų puslapį (users.html), kuriame būtų atvaizduotas vartotojų sąrašas.
-//   8.1. Prie vartotojo turėtu būti jo vardas ir parašytų post'ų skaičius.
-//   8.2. Paspaudus ant vartotojo - nukreipiama į jo puslapį.
+import { init2 } from "./navBar.js";
+init2()
 let userList = document.querySelector("#user-wrapper")
 let userUlList = document.createElement("ul")
 let userListTitle = document.createElement("h2")
@@ -11,25 +10,20 @@ userList.prepend(userListTitle)
 
 
 
+function int() {
+    fetch(`https://jsonplaceholder.typicode.com/users/?_embed=posts`)
+        .then(res => res.json())
+        .then((users) => {
+            users.forEach(user => {
+                let userLiList = document.createElement("li")
+                userUlList.append(userLiList)
+                userList.append(userUlList)
 
-fetch(`https://jsonplaceholder.typicode.com/users `)
-    .then(res => res.json())
-    .then((users) => {
-        users.map((user) => {
+                userLiList.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a> ( Posts :${user.posts.length}) `
+
+            });
 
 
-            let userLiList = document.createElement("li")
-            userUlList.append(userLiList)
-            userList.append(userUlList)
-
-
-
-            fetch(`https://jsonplaceholder.typicode.com/users/${user.id}/posts`)
-                .then(res => res.json())
-                .then((postLength) => {
-                    console.log(postLength.length)
-
-                    userLiList.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a> ( Posts :${postLength.length}) `
-                })
         })
-    })
+}
+int()
