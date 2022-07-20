@@ -1,4 +1,4 @@
-import { init2 } from "./navBar.js";
+import { init2 } from "../navBar.js";
 init2()
 let userList = document.querySelector("#user-wrapper")
 let userUlList = document.createElement("ul")

@@ -1,5 +1,5 @@
 //vardai
-import { init2 } from "./navBar.js";
+import { init2 } from "../navBar.js";
 
 init2()
 

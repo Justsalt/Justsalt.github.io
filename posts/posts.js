@@ -1,5 +1,5 @@
-import { firstLetterUppercase } from "./functions.js"
-import { init2 } from "./navBar.js";
+import { firstLetterUppercase } from "../functions.js"
+import { init2 } from "../navBar.js";
 init2()
 
 function init() {
